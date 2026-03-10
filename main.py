@@ -4,6 +4,8 @@ Entry point — starts the reminder polling thread, then the Telegram bot.
 """
 
 import logging
+import time
+import os
 from config import TELEGRAM_BOT_TOKEN, YOUR_TELEGRAM_CHAT_ID, REMINDER_POLL_INTERVAL
 import reminder_manager as rm
 import telegram_handler
@@ -16,6 +18,18 @@ logger = logging.getLogger(__name__)
 
 
 def main():
+
+    # Wait for volume to be fully mounted
+    print("Waiting for volume to mount...")
+    for i in range(10):
+        if os.path.exists("/app/data"):
+            print(f"Volume ready at /app/data")
+            break
+        print(f"Waiting... attempt {i+1}")
+        time.sleep(2)
+    else:
+        print("Volume not found after 20s — using fallback path")
+
     if not TELEGRAM_BOT_TOKEN:
         raise ValueError("TELEGRAM_BOT_TOKEN not set in .env")
 
