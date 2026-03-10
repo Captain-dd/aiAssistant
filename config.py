@@ -1,5 +1,13 @@
 import os
 from dotenv import load_dotenv
+import os
+
+# Use /app/data on Railway, local folder on Mac
+IS_RAILWAY = os.getenv("RAILWAY_ENVIRONMENT") is not None
+
+MEMORIES_DIR       = "/app/data/memories" if IS_RAILWAY else "memories"
+REMINDERS_FILE     = "/app/data/reminders.json" if IS_RAILWAY else "reminders.json"
+DAILY_SUMMARY_FILE = "/app/data/daily_summary.json" if IS_RAILWAY else "daily_summary.json"
 
 load_dotenv()
 
@@ -10,6 +18,13 @@ TWILIO_AUTH_TOKEN    = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_FROM_NUMBER   = os.getenv("TWILIO_FROM_NUMBER")
 YOUR_PHONE_NUMBER    = os.getenv("YOUR_PHONE_NUMBER")
 YOUR_TELEGRAM_CHAT_ID = os.getenv("YOUR_TELEGRAM_CHAT_ID")
+
+# Use /app/data on Railway, local folder on Mac
+IS_RAILWAY = os.getenv("RAILWAY_ENVIRONMENT") is not None
+
+MEMORIES_DIR       = "/app/data/memories" if IS_RAILWAY else "memories"
+REMINDERS_FILE     = "/app/data/reminders.json" if IS_RAILWAY else "reminders.json"
+DAILY_SUMMARY_FILE = "/app/data/daily_summary.json" if IS_RAILWAY else "daily_summary.json"
 
 MEMORIES_DIR   = "memories"
 REMINDERS_FILE = "reminders.json"
