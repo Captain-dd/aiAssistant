@@ -31,6 +31,8 @@ MEMORIES_DIR       = os.path.join(_base, "memories")
 REMINDERS_FILE     = os.path.join(_base, "reminders.json")
 DAILY_SUMMARY_FILE = os.path.join(_base, "daily_summary.json")
 
+print(MEMORIES_DIR)
+
 MEMORIES_DIR   = "memories"
 REMINDERS_FILE = "reminders.json"
 
