@@ -22,9 +22,14 @@ YOUR_TELEGRAM_CHAT_ID = os.getenv("YOUR_TELEGRAM_CHAT_ID")
 # Use /app/data on Railway, local folder on Mac
 IS_RAILWAY = os.getenv("RAILWAY_ENVIRONMENT") is not None
 
-MEMORIES_DIR       = "/app/data/memories" if IS_RAILWAY else "memories"
-REMINDERS_FILE     = "/app/data/reminders.json" if IS_RAILWAY else "reminders.json"
-DAILY_SUMMARY_FILE = "/app/data/daily_summary.json" if IS_RAILWAY else "daily_summary.json"
+import os
+
+# Try volume path first, fall back to local
+_base = "/app/data" if os.path.exists("/app/data") else "."
+
+MEMORIES_DIR       = os.path.join(_base, "memories")
+REMINDERS_FILE     = os.path.join(_base, "reminders.json")
+DAILY_SUMMARY_FILE = os.path.join(_base, "daily_summary.json")
 
 MEMORIES_DIR   = "memories"
 REMINDERS_FILE = "reminders.json"
